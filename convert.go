@@ -18,8 +18,7 @@ package superscriptsubscript
 
 import (
 	"bytes"
-
-	"github.com/pkg/errors"
+	"fmt"
 )
 
 var superscripts = map[rune]rune{
@@ -225,7 +224,7 @@ var subscripts = map[rune]rune{
 func ToSuperscript(r rune) (rune, error) {
 	s, ok := superscripts[r]
 	if !ok {
-		return r, errors.New("no corresponding superscript: " + string(r))
+		return r, fmt.Errorf("no corresponding superscript: %c", r)
 	}
 	return s, nil
 }
@@ -246,7 +245,7 @@ func ToSuperscripts(s string) string {
 func ToSubscript(r rune) (rune, error) {
 	s, ok := subscripts[r]
 	if !ok {
-		return r, errors.New("no corresponding superscript: " + string(r))
+		return r, fmt.Errorf("no corresponding superscript: %c", r)
 	}
 	return s, nil
 }
