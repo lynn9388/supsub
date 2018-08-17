@@ -24,30 +24,32 @@ import (
 
 type runes []rune
 
-func (r runes) Len() int {
-	return len(r)
-}
+func (r runes) Len() int           { return len(r) }
+func (r runes) Less(i, j int) bool { return r[i] < r[j] }
+func (r runes) Swap(i, j int)      { r[i], r[j] = r[j], r[i] }
 
-func (r runes) Less(i, j int) bool {
-	return r[i] < r[j]
-}
-
-func (r runes) Swap(i, j int) {
-	r[i], r[j] = r[j], r[i]
-}
-
-func TestSeperate(t *testing.T) {
-	fmt.Println("Superscripts")
-	keys := getSortedKeys(superscripts)
-	for _, k := range keys {
-		fmt.Printf("%c %c\n", k, superscripts[k])
+func TestToSuperscript(t *testing.T) {
+	fmt.Println("Superscripts:")
+	for _, r := range getSortedKeys(superscripts) {
+		s, err := ToSuperscript(r)
+		if err != nil && s != r {
+			t.Errorf("no corresponding superscript and returns different value: ToSuperscript(%c) = %c", r, s)
+		}
+		fmt.Printf("%c%c ", r, s)
 	}
+	fmt.Println()
+}
 
-	fmt.Println("\nSubscripts")
-	keys = getSortedKeys(subscripts)
-	for _, k := range keys {
-		fmt.Printf("%c %c\n", k, subscripts[k])
+func TestToSubscript(t *testing.T) {
+	fmt.Println("Subscripts:")
+	for _, r := range getSortedKeys(subscripts) {
+		s, err := ToSubscript(r)
+		if err != nil && s != r {
+			t.Errorf("no corresponding subscript and returns different value: ToSubscript(%c) = %c", r, s)
+		}
+		fmt.Printf("%c%c ", r, s)
 	}
+	fmt.Println()
 }
 
 func TestCombine(t *testing.T) {
