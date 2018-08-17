@@ -162,7 +162,7 @@ var superscripts = map[rune]rune{
 
 	// Latin-1 punctuation and symbols - C1 Controls and Latin-1 Supplement
 	// https://www.unicode.org/charts/PDF/U0080.pdf
-	//'\u0061': '\u00aa', // '\u006f'(o) '\u1d52'(ᵒ) '\u00ba'(º)
+	//'\u0061': '\u00aa', // '\u0061'(a) '\u1d43'(ᵃ) '\u00aa'(ª)
 	'\u0032': '\u00b2',
 	'\u0033': '\u00b3',
 	'\u0031': '\u00b9',
