@@ -16,6 +16,12 @@
 
 package superscriptsubscript
 
+import (
+	"bytes"
+
+	"github.com/pkg/errors"
+)
+
 var superscripts = map[rune]rune{
 	// Superscripts - Superscripts and Subscripts
 	// https://www.unicode.org/charts/PDF/U2070.pdf
@@ -212,4 +218,46 @@ var subscripts = map[rune]rune{
 	'\u03c1': '\u1d68',
 	'\u03c6': '\u1d69',
 	'\u03c7': '\u1d6a',
+}
+
+// ToSuperscript converts a rune to superscript. It returns the superscript
+// or the original rune and a error if there is no corresponding superscript.
+func ToSuperscript(r rune) (rune, error) {
+	s, ok := superscripts[r]
+	if !ok {
+		return r, errors.New("no corresponding superscript: " + string(r))
+	}
+	return s, nil
+}
+
+// ToSuperscripts converts a string to superscript to the utmost. It will
+// use original rune if there has no corresponding superscript for a letter.
+func ToSuperscripts(s string) string {
+	var buf bytes.Buffer
+	for _, r := range s {
+		superscript, _ := ToSuperscript(r)
+		buf.WriteRune(superscript)
+	}
+	return buf.String()
+}
+
+// ToSubscript converts a rune to subscript. It returns the subscript or the
+// original rune and a error if there is no corresponding subscript.
+func ToSubscript(r rune) (rune, error) {
+	s, ok := subscripts[r]
+	if !ok {
+		return r, errors.New("no corresponding superscript: " + string(r))
+	}
+	return s, nil
+}
+
+// ToSubscripts converts a string to subscript to the utmost. It will
+// use original rune if there has no corresponding subscript for a letter.
+func ToSubscripts(s string) string {
+	var buf bytes.Buffer
+	for _, r := range s {
+		subscript, _ := ToSubscript(r)
+		buf.WriteRune(subscript)
+	}
+	return buf.String()
 }
