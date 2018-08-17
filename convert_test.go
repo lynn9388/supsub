@@ -52,7 +52,7 @@ func TestToSubscript(t *testing.T) {
 	fmt.Println()
 }
 
-func TestCombine(t *testing.T) {
+func TestConvertList(t *testing.T) {
 	set := make(map[rune]struct{})
 	for k := range superscripts {
 		set[k] = struct{}{}
@@ -67,6 +67,7 @@ func TestCombine(t *testing.T) {
 	}
 	sort.Sort(runes(keys))
 
+	fmt.Println("Convert list:")
 	for _, k := range keys {
 		superscript, ok := superscripts[k]
 		if !ok {
