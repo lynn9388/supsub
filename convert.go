@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package superscriptsubscript
+package supsub
 
 import (
 	"bytes"
@@ -219,9 +219,9 @@ var subscripts = map[rune]rune{
 	'\u03c7': '\u1d6a',
 }
 
-// ToSuperscript converts a rune to superscript. It returns the superscript
-// or the original rune and a error if there is no corresponding superscript.
-func ToSuperscript(r rune) (rune, error) {
+// Sup converts a rune to superscript. It returns the superscript or the
+// original rune and a error if there is no corresponding superscript.
+func Sup(r rune) (rune, error) {
 	s, ok := superscripts[r]
 	if !ok {
 		return r, fmt.Errorf("no corresponding superscript: %c", r)
@@ -229,34 +229,34 @@ func ToSuperscript(r rune) (rune, error) {
 	return s, nil
 }
 
-// ToSuperscripts converts a string to superscript to the utmost. It will
-// use original rune if there has no corresponding superscript for a letter.
-func ToSuperscripts(s string) string {
+// ToSup converts a string to superscript to the utmost. It will use original
+// rune if there has no corresponding superscript for a letter.
+func ToSup(s string) string {
 	var buf bytes.Buffer
 	for _, r := range s {
-		superscript, _ := ToSuperscript(r)
-		buf.WriteRune(superscript)
+		sup, _ := Sup(r)
+		buf.WriteRune(sup)
 	}
 	return buf.String()
 }
 
-// ToSubscript converts a rune to subscript. It returns the subscript or the
-// original rune and a error if there is no corresponding subscript.
-func ToSubscript(r rune) (rune, error) {
+// Sub converts a rune to subscript. It returns the subscript or the original
+// rune and a error if there is no corresponding subscript.
+func Sub(r rune) (rune, error) {
 	s, ok := subscripts[r]
 	if !ok {
-		return r, fmt.Errorf("no corresponding superscript: %c", r)
+		return r, fmt.Errorf("no corresponding subscript: %c", r)
 	}
 	return s, nil
 }
 
-// ToSubscripts converts a string to subscript to the utmost. It will
-// use original rune if there has no corresponding subscript for a letter.
-func ToSubscripts(s string) string {
+// ToSub converts a string to subscript to the utmost. It will use original
+// rune if there has no corresponding subscript for a letter.
+func ToSub(s string) string {
 	var buf bytes.Buffer
 	for _, r := range s {
-		subscript, _ := ToSubscript(r)
-		buf.WriteRune(subscript)
+		sub, _ := Sub(r)
+		buf.WriteRune(sub)
 	}
 	return buf.String()
 }

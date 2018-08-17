@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package superscriptsubscript
+package supsub
 
 import (
 	"fmt"
@@ -28,24 +28,24 @@ func (r runes) Len() int           { return len(r) }
 func (r runes) Less(i, j int) bool { return r[i] < r[j] }
 func (r runes) Swap(i, j int)      { r[i], r[j] = r[j], r[i] }
 
-func TestToSuperscript(t *testing.T) {
+func TestSup(t *testing.T) {
 	fmt.Println("Superscripts:")
 	for _, r := range getSortedKeys(superscripts) {
-		s, err := ToSuperscript(r)
+		s, err := Sup(r)
 		if err != nil && s != r {
-			t.Errorf("no corresponding superscript and returns different value: ToSuperscript(%c) = %c", r, s)
+			t.Errorf("no corresponding superscript and returns different value: Sup(%c) = %c", r, s)
 		}
 		fmt.Printf("%c%c ", r, s)
 	}
 	fmt.Println()
 }
 
-func TestToSubscript(t *testing.T) {
+func TestSub(t *testing.T) {
 	fmt.Println("Subscripts:")
 	for _, r := range getSortedKeys(subscripts) {
-		s, err := ToSubscript(r)
+		s, err := Sub(r)
 		if err != nil && s != r {
-			t.Errorf("no corresponding subscript and returns different value: ToSubscript(%c) = %c", r, s)
+			t.Errorf("no corresponding subscript and returns different value: Sub(%c) = %c", r, s)
 		}
 		fmt.Printf("%c%c ", r, s)
 	}
@@ -69,15 +69,15 @@ func TestConvertList(t *testing.T) {
 
 	fmt.Println("Convert list:")
 	for _, k := range keys {
-		superscript, ok := superscripts[k]
+		sup, ok := superscripts[k]
 		if !ok {
-			superscript = ' '
+			sup = ' '
 		}
-		subscript, ok := subscripts[k]
+		sub, ok := subscripts[k]
 		if !ok {
-			subscript = ' '
+			sub = ' '
 		}
-		fmt.Printf("%c %c %c\n", k, superscript, subscript)
+		fmt.Printf("%c %c %c\n", k, sup, sub)
 	}
 }
 
