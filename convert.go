@@ -159,7 +159,7 @@ var superscripts = map[rune]rune{
 	'\u0290': '\u1dbc',
 	'\u0291': '\u1dbd',
 	'\u0292': '\u1dbe',
-	'\u02b8': '\u1dbf',
+	'\u03b8': '\u1dbf',
 
 	// Latin-1 punctuation and symbols - C1 Controls and Latin-1 Supplement
 	// https://www.unicode.org/charts/PDF/U0080.pdf
