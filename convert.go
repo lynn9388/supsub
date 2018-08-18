@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+// Package supsub provides a mapping from normal unicode text to superscript
+// and subscript.
 package supsub
 
 import (
