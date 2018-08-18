@@ -40,6 +40,11 @@ func TestSup(t *testing.T) {
 	fmt.Println()
 }
 
+func TestToSup(t *testing.T) {
+	s := "0123456789"
+	fmt.Println(s + "\n" + ToSup(s))
+}
+
 func TestSub(t *testing.T) {
 	fmt.Println("Subscripts:")
 	for _, r := range getSortedKeys(subscripts) {
@@ -50,6 +55,11 @@ func TestSub(t *testing.T) {
 		fmt.Printf("%c%c ", r, s)
 	}
 	fmt.Println()
+}
+
+func TestToSub(t *testing.T) {
+	s := "0123456789"
+	fmt.Println(s + "\n" + ToSub(s))
 }
 
 func TestConvertList(t *testing.T) {
