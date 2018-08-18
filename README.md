@@ -1,4 +1,4 @@
-# supsub
+# SupSub
 
 Convert normal unicode text to superscript or subscript.
 
@@ -11,25 +11,32 @@ Based on official unicode consortium code chart. Includes:
 
 > [Superscripts and Subscripts](https://en.wikipedia.org/wiki/Superscripts_and_Subscripts)
 
-## Usage
+## Install
 
-```text
-func Sub(r rune) (rune, error)
-    Sub converts a rune to subscript. It returns the subscript or the
-    original rune and a error if there is no corresponding subscript.
+Fist, use `go get` to install the latest version of the library:
 
-func Sup(r rune) (rune, error)
-    Sup converts a rune to superscript. It returns the superscript or the
-    original rune and a error if there is no corresponding superscript.
-
-func ToSub(s string) string
-    ToSub converts a string to subscript to the utmost. It will use original
-    rune if there has no corresponding subscript for a letter.
-
-func ToSup(s string) string
-    ToSup converts a string to superscript to the utmost. It will use
-    original rune if there has no corresponding superscript for a letter.
+```sh
+go get -u github.com/lynn9388/supsub
 ```
+
+Next, include SupSub in your application:
+
+```go
+import "github.com/lynn9388/supsub"
+```
+
+## Example
+
+```go
+fmt.Printf("x%v = %v%v = %v\n", supsub.ToSup("y"), x, supsub.ToSup("2"), math.Pow(2.0, 2.0))
+```
+
+Output:
+```sh
+xʸ = 2² = 4
+```
+
+For more details you can check the [doc](https://godoc.org/github.com/lynn9388/supsub)
 
 ## Test result and convert list
 
