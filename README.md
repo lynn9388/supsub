@@ -1,6 +1,7 @@
 # SupSub
 
 [![GoDoc](https://godoc.org/github.com/lynn9388/supsub?status.svg)](https://godoc.org/github.com/lynn9388/supsub)
+[![Build Status](https://travis-ci.com/lynn9388/supsub.svg?branch=master)](https://travis-ci.com/lynn9388/supsub)
 
 Convert normal unicode text to superscript or subscript.
 
