@@ -3,9 +3,10 @@
 [![GoDoc](https://godoc.org/github.com/lynn9388/supsub?status.svg)](https://godoc.org/github.com/lynn9388/supsub)
 [![Build Status](https://travis-ci.com/lynn9388/supsub.svg?branch=master)](https://travis-ci.com/lynn9388/supsub)
 
-Convert normal unicode text to superscript or subscript.
+Convert normal Unicode text to superscript or subscript.
 
-Based on official unicode consortium code chart. Includes:
+Based on official Unicode consortium code chart. Includes:
+
 - [Superscripts and Subscripts](https://www.unicode.org/charts/PDF/U2070.pdf)
 - [Spacing Modifier Letters](https://www.unicode.org/charts/PDF/U02B0.pdf)
 - [Phonetic Extensions](https://www.unicode.org/charts/PDF/U1D00.pdf)
@@ -35,6 +36,7 @@ fmt.Printf("x%v = %v%v = %v\n", supsub.ToSup("y"), x, supsub.ToSup("2"), math.Po
 ```
 
 Output:
+
 ```sh
 xʸ = 2² = 4
 ```
